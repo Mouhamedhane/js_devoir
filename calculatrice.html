@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="calculator">
+        <h2>Calculatrice</h2>
+
+        <form id="calculatorForm">
+            <label for="num1">Nombre 1:</label>
+            <input type="text" id="num1" required pattern="\d+" title="Veuillez saisir un nombre">
+
+            <label for="num2">Nombre 2:</label>
+            <input type="text" id="num2" required pattern="\d+" title="Veuillez saisir un nombre autre que 0">
+
+            <button type="button" onclick="calculate()">Calculer</button>
+        </form>
+
+        <h3>Résultats :</h3>
+        <p id="sum"></p>
+        <p id="product"></p>
+        <p id="division"></p>
+        <p id="subtraction"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var num1 = Number(document.getElementById("num1").value);
+            var num2 = Number(document.getElementById("num2").value);
+
+            if (Number.isNaN(num1) || Number.isNaN(num2)) {
+                alert("Veuillez saisir des nombres valides.");
+                return;
+            }
+
+            if (num2 === 0) {
+                alert("Division par zéro impossible.");
+                return;
+            }
+
+          
+            var sum = num1 + num2;
+            var product = num1 * num2;
+            var division = num1 / num2;
+            var subtraction = num1 - num2;
+
+      
+            document.getElementById("sum").innerHTML = "Somme : " + sum;
+            document.getElementById("product").innerHTML = "Multiplication : " + product;
+            document.getElementById("division").innerHTML = "Division : " + division;
+            document.getElementById("subtraction").innerHTML = "Soustraction : " + subtraction;
+        }
+    </script>
+
+</body>
+</html>
